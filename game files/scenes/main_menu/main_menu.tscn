@@ -1,0 +1,176 @@
+[gd_scene load_steps=8 format=3 uid="uid://hqsf1g0bager"]
+
+[ext_resource type="Script" path="res://game files/scenes/main_menu/main_menu.gd" id="1_l6ivu"]
+[ext_resource type="PackedScene" uid="uid://bk4eh2t2mecpk" path="res://tools example/resource manager/resource display test.tscn" id="2_yr65q"]
+[ext_resource type="PackedScene" uid="uid://cmy4djhrs06gj" path="res://game files/scenes/main_menu/how_to_play_screen.tscn" id="3_g0dre"]
+[ext_resource type="PackedScene" uid="uid://cjvv3lxtp52rf" path="res://game files/scenes/main_menu/settings_screen.tscn" id="4_w4uxy"]
+[ext_resource type="PackedScene" uid="uid://bxo4jc55q6bnt" path="res://game files/scenes/main_menu/about_screen.tscn" id="5_2q5g5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjrr2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkr1y"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6ivu")
+start_scene = ExtResource("2_yr65q")
+
+[node name="BG" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuPanel" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Margin" type="MarginContainer" parent="HBoxContainer/MenuPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TreeSpace" type="Control" parent="HBoxContainer/MenuPanel/Margin"]
+clip_contents = true
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="HBoxContainer/MenuPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="GameTitle" type="Label" parent="HBoxContainer/MenuPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Title"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="VBoxContainer" parent="HBoxContainer/MenuPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="How To Play" type="Button" parent="HBoxContainer/MenuPanel/Margin/VBox/Buttons"]
+visible = false
+layout_mode = 2
+text = "How to play?"
+
+[node name="Start" type="Button" parent="HBoxContainer/MenuPanel/Margin/VBox/Buttons"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Play"
+
+[node name="Continue" type="Button" parent="HBoxContainer/MenuPanel/Margin/VBox/Buttons"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+text = "Continue"
+
+[node name="Settings" type="Button" parent="HBoxContainer/MenuPanel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Settings"
+
+[node name="About" type="Button" parent="HBoxContainer/MenuPanel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "About"
+
+[node name="Exit" type="Button" parent="HBoxContainer/MenuPanel/Margin/VBox/Buttons"]
+layout_mode = 2
+text = "Exit"
+
+[node name="EmptySpace" type="Control" parent="HBoxContainer/MenuPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="HBoxContainer"]
+visible = false
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bjrr2")
+
+[node name="Container" type="VBoxContainer" parent="HBoxContainer/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Scroll/Container"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = " Settings"
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Scroll/Container/Label"]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer/Scroll/Container/Label"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Close"
+
+[node name="ScreenContainer" type="TabContainer" parent="HBoxContainer/Scroll/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bjrr2")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_pkr1y")
+tabs_visible = false
+
+[node name="HowToPlayScreen" parent="HBoxContainer/Scroll/Container/ScreenContainer" instance=ExtResource("3_g0dre")]
+layout_mode = 2
+
+[node name="Settings" parent="HBoxContainer/Scroll/Container/ScreenContainer" instance=ExtResource("4_w4uxy")]
+visible = false
+layout_mode = 2
+
+[node name="About" parent="HBoxContainer/Scroll/Container/ScreenContainer" instance=ExtResource("5_2q5g5")]
+visible = false
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Scroll"]
+show_behind_parent = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="HBoxContainer/MenuPanel/Margin/VBox/Buttons/How To Play" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuPanel/Margin/VBox/Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuPanel/Margin/VBox/Buttons/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuPanel/Margin/VBox/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuPanel/Margin/VBox/Buttons/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="HBoxContainer/MenuPanel/Margin/VBox/Buttons/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GameResource" load_steps=3 format=3 uid="uid://d1x04ak1keogp"]
+
+[ext_resource type="Texture2D" uid="uid://xu5bwwppx4na" path="res://icon.svg" id="2_l8tn0"]
+[ext_resource type="Script" path="res://tools/resource manager/game_resources.gd" id="2_nhucq"]
+
+[resource]
+script = ExtResource("2_nhucq")
+game_name = "None"
+project_name = &"none"
+discription = ""
+texture = ExtResource("2_l8tn0")
+modulate = Color(1, 0.882353, 0, 1)
+display_mode = 0
+maximum = 4294967296

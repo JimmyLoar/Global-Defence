@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ryidkyx73uox"]
+
+[ext_resource type="PackedScene" uid="uid://d1o8ih5y4sa2v" path="res://tools/resource manager/displayes/resources_display.tscn" id="1_peu1m"]
+[ext_resource type="Script" path="res://tools/resource manager/displayes/prise_display.gd" id="2_qlqvh"]
+
+[node name="ResourcePrise" instance=ExtResource("1_peu1m")]
+script = ExtResource("2_qlqvh")
+prise = 0
+use_modulate = true
+
+[node name="Value" parent="HBoxContainer" index="0"]
+modulate = Color(1, 0.882353, 0, 1)
