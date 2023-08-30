@@ -18,9 +18,16 @@ config/icon="res://icon.svg"
 
 ResourceManager="*res://tools/resource manager/resource_manager.gd"
 
+[display]
+
+window/size/viewport_width=2048
+window/size/viewport_height=1152
+
 [game_settings]
 
-world/cells/size=Vector2i(32, 32)
+global/defence/world_size=Vector2i(60, 36)
+global/debug/cell_border=2
+global/defence/cell_size=32
 
 [layer_names]
 

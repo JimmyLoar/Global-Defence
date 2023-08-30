@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://coc8um4bqa0vb"]
+
+[ext_resource type="Script" path="res://game files/scenes/level/defence.gd" id="1_hr1mb"]
+
+[node name="LevelDisplay" type="Node2D"]
+script = ExtResource("1_hr1mb")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="UI & Hud" type="CanvasLayer" parent="."]
