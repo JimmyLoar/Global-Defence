@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://coc8um4bqa0vb"]
+[gd_scene load_steps=4 format=3 uid="uid://coc8um4bqa0vb"]
 
 [ext_resource type="Script" path="res://game files/scenes/level/defence.gd" id="1_hr1mb"]
+[ext_resource type="TileSet" uid="uid://danwtocvbryl5" path="res://assets/tileset/levels_tileset.tres" id="2_pxglh"]
+[ext_resource type="PackedScene" uid="uid://dodkrltl4fa4u" path="res://game files/scenes/level_objects/!cell_object.tscn" id="3_cxc25"]
 
 [node name="LevelDisplay" type="Node2D"]
 script = ExtResource("1_hr1mb")
 
 [node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_pxglh")
 format = 2
 
 [node name="UI & Hud" type="CanvasLayer" parent="."]
+
+[node name="CellTower" parent="." instance=ExtResource("3_cxc25")]
+position = Vector2(723, 332)

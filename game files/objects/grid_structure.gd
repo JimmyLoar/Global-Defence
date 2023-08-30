@@ -1,20 +1,37 @@
-@tool
 class_name GridStructure
 extends Resource
 
-enum Side{RIGHT, DOWN, LEFT, UP}
+const CELL_DRAW_BORDER = Vector2.ONE * 2
+const NEIBORNS_OFFSET = [
+	Vector2.RIGHT, 
+	Vector2.DOWN, 
+	Vector2.LEFT, 
+	Vector2.UP,
+]
+const CORNERS_OFFSET = [
+	Vector2(-1, -1),
+	Vector2(1, -1),
+	Vector2(1, 1),
+	Vector2(-1, 1),
+]
+
+enum LookSide{RIGHT, DOWN, LEFT, UP}
 const GRID_LIMIT_SIZE = [1, 7]
+
+@export var cell_modulate := Color(1, 1, 1, 0.7)
 
 @export var _main_structure := PackedVector2Array([Vector2i.ZERO]) : set = set_structure, get = get_structure
 
-var current_side: Side = Side.RIGHT : set = set_rotate_side
+var current_side: LookSide = LookSide.RIGHT
+var cell_size = Vector2.ONE * ProjectSettings.get_setting("game_settings/global/defence/cell_size")
+var cell_offset = cell_size / 2
 
-var _rotated_structures: Array[PackedVector2Array] = Array()
-var _outlines: Array[PackedVector2Array] = Array()
+var _rotated_structures: Array[PackedVector2Array] = []
+var _outlines: Array[PackedVector2Array] = []
 
-var _structure_size: Array[Vector2i] = Array()
-var _minimal_position: Array[Vector2i] = Array()
-var _maximal_position: Array[Vector2i] = Array()
+var _structure_size: Array[Vector2i] = []
+var _minimal_position: Array[Vector2i] = []
+var _maximal_position: Array[Vector2i] = []
 
 
 func _init() -> void:
@@ -44,24 +61,26 @@ func get_structure():
 	return _main_structure
 
 
-func get_center(side: Side = current_side, is_round := true) -> Vector2:
+func get_center(side: LookSide = current_side, is_round := true) -> Vector2:
 	var result = get_size(side) / 2
 	if is_round:
 		return result.floor()
 	return result
 
 
-func get_size(side: Side = current_side) -> Vector2:
-	return _get_maximal_point(get_rotated_structure(side)) - _get_minimal_point(get_rotated_structure(side))
+func get_size(side: LookSide = current_side) -> Vector2:
+	var max = _get_maximal_point(get_rotated_structure(side))
+	var min = _get_minimal_point(get_rotated_structure(side))
+	return max - min
 
 
-func get_rotated_structure(side: Side = current_side) -> PackedVector2Array:
+func get_rotated_structure(side: LookSide = current_side) -> PackedVector2Array:
 	if _rotated_structures[side].is_empty():
 		_rotated_structures[side] = _rotate(side)
 	return _rotated_structures[side]
 
 
-func get_outline(side: Side = current_side) -> PackedVector2Array:
+func get_outline(side: LookSide = current_side) -> PackedVector2Array:
 	var outline: PackedVector2Array= _outlines[side]
 	if outline is PackedVector2Array:
 		return outline
@@ -79,11 +98,11 @@ func _test():
 
 
 func _update_rotations():
-	for side in Side.size():
+	for side in LookSide.size():
 		_rotated_structures[side] = _rotate(side)
 
 
-func _rotate(side: Side):
+func _rotate(side: LookSide):
 	var rotated_structure := PackedVector2Array()
 	for cell in _main_structure:
 		var new_cell = cell.rotated(deg_to_rad(90) * side)
@@ -118,11 +137,11 @@ func _get_maximal_point(structure: PackedVector2Array) -> Vector2:
 
 
 func _update_outlines():
-	for side in  Side.size():
+	for side in  LookSide.size():
 		_outlines[side] = _count_ountile_positions(side)
 
 
-func _count_ountile_positions(side: Side):
+func _count_ountile_positions(side: LookSide):
 	var structure = get_rotated_structure(side)
 	var array := _found_corners_positions(structure)
 	array = Geometry2D.convex_hull(array)
@@ -155,8 +174,8 @@ func _count_ountile_positions(side: Side):
 func _found_corners_positions(structure: PackedVector2Array) -> PackedVector2Array:
 	var array := Array()
 	for cell_pos in structure:
-		for corner_offset in CellObject.CORNERS_OFFSET:
-			var corner_pos: Vector2 = (cell_pos + corner_offset / 2) * CellObject.CELL_SIZE
+		for corner_offset in CORNERS_OFFSET:
+			var corner_pos: Vector2 = (cell_pos + corner_offset / 2) * cell_size
 			corner_pos -= (Vector2.ONE * corner_offset * 4)
 			array.append(corner_pos) 
 			

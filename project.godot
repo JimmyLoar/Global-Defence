@@ -22,6 +22,9 @@ ResourceManager="*res://tools/resource manager/resource_manager.gd"
 
 window/size/viewport_width=2048
 window/size/viewport_height=1152
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
 
 [game_settings]
 

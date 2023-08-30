@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dodkrltl4fa4u"]
+
+[ext_resource type="Script" path="res://game files/scenes/level_objects/!cell_object.gd" id="1_mqeat"]
+[ext_resource type="Script" path="res://game files/objects/grid_structure.gd" id="2_2bfmc"]
+[ext_resource type="Script" path="res://game files/objects/structure_display.gd" id="3_2182f"]
+
+[sub_resource type="Resource" id="Resource_nyg5r"]
+script = ExtResource("2_2bfmc")
+cell_modulate = Color(1, 1, 1, 0.7)
+_main_structure = PackedVector2Array(0, 0, 1, 0, 2, 0, 1, 1)
+
+[node name="CellTower" type="Node2D"]
+position = Vector2(123, 149)
+script = ExtResource("1_mqeat")
+structure = SubResource("Resource_nyg5r")
+
+[node name="StructureDisplay" type="Node2D" parent="."]
+script = ExtResource("3_2182f")
+structure = SubResource("Resource_nyg5r")
