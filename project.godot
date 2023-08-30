@@ -13,3 +13,27 @@ config_version=5
 config/name="Global Defence"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ResourceManager="*res://tools/resource manager/resource_manager.gd"
+
+[game_settings]
+
+world/cells/size=Vector2i(32, 32)
+
+[layer_names]
+
+2d_render/layer_1="Defualt"
+2d_render/layer_2="Enveromant"
+2d_render/layer_4="Tower"
+2d_render/layer_5="Enemy"
+2d_render/layer_6="Projectile"
+2d_render/layer_7="Efficts"
+2d_render/layer_8="Hud"
+2d_render/layer_9="UI"
+2d_physics/layer_1="Defualt"
+2d_navigation/layer_1="Defualt"
+2d_physics/layer_3="Tower"
+2d_physics/layer_4="Enemy"
+2d_physics/layer_5="Projectile"

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://hqsf1g0bager"]
+[gd_scene load_steps=7 format=3 uid="uid://hqsf1g0bager"]
 
 [ext_resource type="Script" path="res://game files/scenes/main_menu/main_menu.gd" id="1_l6ivu"]
-[ext_resource type="PackedScene" uid="uid://bk4eh2t2mecpk" path="res://tools example/resource manager/resource display test.tscn" id="2_yr65q"]
 [ext_resource type="PackedScene" uid="uid://cmy4djhrs06gj" path="res://game files/scenes/main_menu/how_to_play_screen.tscn" id="3_g0dre"]
 [ext_resource type="PackedScene" uid="uid://cjvv3lxtp52rf" path="res://game files/scenes/main_menu/settings_screen.tscn" id="4_w4uxy"]
 [ext_resource type="PackedScene" uid="uid://bxo4jc55q6bnt" path="res://game files/scenes/main_menu/about_screen.tscn" id="5_2q5g5"]
@@ -18,7 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6ivu")
-start_scene = ExtResource("2_yr65q")
 
 [node name="BG" type="TextureRect" parent="."]
 show_behind_parent = true
