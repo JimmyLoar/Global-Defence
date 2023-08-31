@@ -9,7 +9,7 @@ script = ExtResource("2_2bfmc")
 cell_modulate = Color(1, 1, 1, 0.7)
 _main_structure = PackedVector2Array(0, 0, 1, 0, 2, 0, 1, 1)
 
-[node name="CellTower" type="Node2D"]
+[node name="CellObject" type="Node2D"]
 position = Vector2(123, 149)
 script = ExtResource("1_mqeat")
 structure = SubResource("Resource_nyg5r")

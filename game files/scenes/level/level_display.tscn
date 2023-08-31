@@ -1,17 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://coc8um4bqa0vb"]
+[gd_scene load_steps=6 format=3 uid="uid://coc8um4bqa0vb"]
 
-[ext_resource type="Script" path="res://game files/scenes/level/defence.gd" id="1_hr1mb"]
-[ext_resource type="TileSet" uid="uid://danwtocvbryl5" path="res://assets/tileset/levels_tileset.tres" id="2_pxglh"]
-[ext_resource type="PackedScene" uid="uid://dodkrltl4fa4u" path="res://game files/scenes/level_objects/!cell_object.tscn" id="3_cxc25"]
+[ext_resource type="Script" path="res://game files/scenes/level/level_display.gd" id="1_yee2m"]
+[ext_resource type="TileSet" uid="uid://l565sntadecg" path="res://game files/scenes/level/level_tile_set.tres" id="2_bw0ug"]
+[ext_resource type="Script" path="res://game files/scenes/level/tower_manager.gd" id="4_kmnnm"]
+[ext_resource type="Script" path="res://game files/scenes/level/enemies_manager.gd" id="5_8c4c0"]
+[ext_resource type="Script" path="res://game files/scenes/level/cell_counter.gd" id="6_qbllh"]
 
 [node name="LevelDisplay" type="Node2D"]
-script = ExtResource("1_hr1mb")
+script = ExtResource("1_yee2m")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("2_pxglh")
+tile_set = ExtResource("2_bw0ug")
 format = 2
 
-[node name="UI & Hud" type="CanvasLayer" parent="."]
+[node name="TowerManager" type="Node2D" parent="."]
+script = ExtResource("4_kmnnm")
 
-[node name="CellTower" parent="." instance=ExtResource("3_cxc25")]
-position = Vector2(723, 332)
+[node name="EnemiesManager" type="Node2D" parent="."]
+script = ExtResource("5_8c4c0")
+
+[node name="ObjectManager" type="Node2D" parent="."]
+script = ExtResource("6_qbllh")
+
+[node name="CellCounter" type="Node2D" parent="."]
+script = ExtResource("6_qbllh")
+
+[node name="Director" type="Node" parent="."]
+
+[node name="UI & Hud" type="CanvasLayer" parent="."]

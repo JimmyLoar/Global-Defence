@@ -15,6 +15,7 @@ const CORNERS_OFFSET = [
 	Vector2(-1, 1),
 ]
 
+
 enum LookSide{RIGHT, DOWN, LEFT, UP}
 const GRID_LIMIT_SIZE = [1, 7]
 
@@ -45,7 +46,6 @@ func _init() -> void:
 
 
 #Setters
-
 func set_rotate_side(value: int):
 	current_side = wrapi(value, 0, 4)
 
@@ -69,9 +69,9 @@ func get_center(side: LookSide = current_side, is_round := true) -> Vector2:
 
 
 func get_size(side: LookSide = current_side) -> Vector2:
-	var max = _get_maximal_point(get_rotated_structure(side))
-	var min = _get_minimal_point(get_rotated_structure(side))
-	return max - min
+	var _max = _get_maximal_point(get_rotated_structure(side))
+	var _min = _get_minimal_point(get_rotated_structure(side))
+	return _max - _min
 
 
 func get_rotated_structure(side: LookSide = current_side) -> PackedVector2Array:

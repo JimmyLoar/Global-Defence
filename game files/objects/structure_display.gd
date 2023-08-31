@@ -4,11 +4,10 @@ extends Node2D
 @export var structure: GridStructure
 
 var cell_draw_bordel = Vector2.ONE * ProjectSettings.get_setting("game_settings/global/debug/cell_border")
-var rotate_side = 0
-
-
-func _process(delta: float) -> void:
-	queue_redraw()
+var rotate_side = 0:
+	set(value):
+		rotate_side = value
+		queue_redraw()
 
 
 func _draw():
