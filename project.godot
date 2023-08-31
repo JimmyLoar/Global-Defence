@@ -28,9 +28,10 @@ window/stretch/mode="canvas_items"
 
 [game_settings]
 
-global/defence/world_size=Vector2i(60, 36)
+global/defence/world_size=Vector2i(62, 32)
 global/debug/cell_border=2
 global/defence/cell_size=32
+global/defence/world_offset=Vector2i(1, 2)
 
 [layer_names]
 

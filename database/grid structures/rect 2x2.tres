@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GridStructure" load_steps=2 format=3 uid="uid://cby07vnjn0pti"]
+
+[ext_resource type="Script" path="res://game files/objects/grid_structure.gd" id="1_3m4w0"]
+
+[resource]
+script = ExtResource("1_3m4w0")
+cell_modulate = Color(0, 0.678431, 1, 0.701961)
+_main_structure = PackedVector2Array(0, 0, 1, 0, 0, 1, 1, 1)

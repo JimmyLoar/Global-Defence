@@ -1,7 +1,6 @@
 class_name GridStructure
 extends Resource
 
-const CELL_DRAW_BORDER = Vector2.ONE * 2
 const NEIBORNS_OFFSET = [
 	Vector2.RIGHT, 
 	Vector2.DOWN, 
@@ -20,7 +19,6 @@ enum LookSide{RIGHT, DOWN, LEFT, UP}
 const GRID_LIMIT_SIZE = [1, 7]
 
 @export var cell_modulate := Color(1, 1, 1, 0.7)
-
 @export var _main_structure := PackedVector2Array([Vector2i.ZERO]) : set = set_structure, get = get_structure
 
 var current_side: LookSide = LookSide.RIGHT
